@@ -6,6 +6,31 @@
             "image": "mikethan/multi-client",
             "hostname": "client",
             "essential": false
+        },
+        {
+            "name": "server",
+            "image": "mikethan/multi-client",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "mikethan/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "mikethan/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
         }
     ]
 
